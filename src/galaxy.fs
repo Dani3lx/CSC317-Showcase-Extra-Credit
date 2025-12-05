@@ -16,13 +16,13 @@ out vec4 color;
 vec3 star_pattern(vec3 p, float t)
 {   
     // Yellow-white-orange star colors
-    vec3 core = vec3(1.0, 0.95, 0.7);      // Bright yellow-white
-    vec3 mid = vec3(1.0, 0.8, 0.2);        // Golden yellow
-    vec3 outer = vec3(1.0, 0.6, 0.1);      // Orange
+    // vec3 core = vec3(1.0, 0.95, 0.7);      // Bright yellow-white
+    // vec3 mid = vec3(1.0, 0.8, 0.2);        // Golden yellow
+    // vec3 outer = vec3(1.0, 0.6, 0.1);      // Orange
 
-    // vec3 core = vec3(1.0, 0.9, 1.0);       // Bright white-purple
-    // vec3 mid = vec3(0.85, 0.3, 1.0);       // Vibrant magenta-purple
-    // vec3 outer = vec3(0.6, 0.1, 0.9);      // Intense deep purple
+    vec3 core = vec3(1.0, 0.9, 1.0);       // Bright white-purple
+    vec3 mid = vec3(0.85, 0.3, 1.0);       // Vibrant magenta-purple
+    vec3 outer = vec3(0.6, 0.1, 0.9);      // Intense deep purple
     
     vec3 result = mix(outer, mid, 0.3);
     result = mix(result, core, 0.5);
