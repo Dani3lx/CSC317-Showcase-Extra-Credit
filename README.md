@@ -52,6 +52,14 @@ This piece creates a procedurally generated galaxy visualization using shader pr
    - Procedural brightness pulsation using time-based sine waves with per-star frequency variation
    - Smooth alpha falloff from center to edges for soft, diffuse star appearance
 
+
+https://github.com/user-attachments/assets/d7ff750d-de94-4b8a-b16a-efafe7e5be32
+
+
+https://github.com/user-attachments/assets/8dd5d569-9a87-4f6f-a674-440277310cad
+
+
+
 ## Acknowledgements
 
 ### Math Resources
