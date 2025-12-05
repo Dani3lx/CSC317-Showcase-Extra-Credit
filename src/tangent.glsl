@@ -5,9 +5,8 @@
 //   B  3D unit bitangent vector
 void tangent(in vec3 N, out vec3 T, out vec3 B)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  T = vec3(1,0,0);
-  B = vec3(0,1,0);
-  /////////////////////////////////////////////////////////////////////////////
+  T = normalize(cross(N, vec3(0.0, 1.0, 0.0)));
+  if (length(T) < 0.001)
+    T = normalize(cross(N, vec3(1.0, 0.0, 0.0)));
+  B = normalize(cross(N, T));
 }

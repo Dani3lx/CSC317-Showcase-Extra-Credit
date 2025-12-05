@@ -8,7 +8,7 @@ layout(triangles, equal_spacing, ccw) in;
 uniform mat4 view;
 uniform mat4 proj;
 uniform float animation_seconds;
-uniform bool is_moon;
+uniform int object_id;
 // Inputs:
 //                    array of 3 3D patch corner positions
 in vec4 pos_es_in[];
@@ -25,11 +25,12 @@ out vec3 sphere_fs_in;
 // expects: interpolat, model, 
 void main()
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  pos_fs_in = interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]);
+  sphere_fs_in = normalize(interpolate(gl_TessCoord, pos_es_in[0], pos_es_in[1], pos_es_in[2]).xyz);
+  view_pos_fs_in = view * model(object_id, animation_seconds) * vec4(sphere_fs_in, 1.0);
+  pos_fs_in = proj * view_pos_fs_in;
+  normal_fs_in = normalize((view * model(object_id, animation_seconds) * vec4(sphere_fs_in, 0.0)).xyz);
+
   gl_Position = pos_fs_in;
-  /////////////////////////////////////////////////////////////////////////////
 }
 
 

@@ -3,9 +3,8 @@
 // Return a 4x4 matrix that translates and 3D point by the given 3D vector
 mat4 translate(vec3 t)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return identity();
-  /////////////////////////////////////////////////////////////////////////////
+  mat4 res = identity();
+  res[3] = vec4(t, 1.0);
+  return res;
 }
 

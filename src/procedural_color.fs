@@ -17,8 +17,14 @@ out vec3 color;
 // expects: blinn_phong, perlin_noise
 void main()
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  color = vec3(1,1,1);
-  /////////////////////////////////////////////////////////////////////////////
+  vec3 white = vec3(1.0, 1.0, 1.0);
+  vec3 n = normalize(normal_fs_in);
+  vec3 v = normalize(-view_pos_fs_in.xyz);
+  float theta = M_PI * animation_seconds / 4.0;
+  float x = cos(theta);
+  float z = sin(theta);
+  vec3 l = normalize(vec3(x, 1.0, z));
+  vec3 baseColor = mix(vec3(0.0, 0.0, 1.0), vec3(0.5, 0.5, 0.5), float(is_moon));
+  baseColor += 0.5 * perlin_noise(sphere_fs_in * 3) + 0.5;
+  color = blinn_phong(baseColor, baseColor, white, 1000.0, n, v, l);
 }

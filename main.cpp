@@ -34,8 +34,8 @@ bool mouse_down = false;
 bool is_animating = true;
 double last_time = get_seconds();
 double animation_seconds = 0;
-int width =  640;
-int height = 360;
+int width =  1920 / 2;
+int height = 1080 / 2;
 // Whether display has high dpi (e.g., Mac retinas)
 int highdpi = 1;
 GLuint prog_id=0;
@@ -326,13 +326,17 @@ Usage:
     {
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
-    for(int i = 0;i<2;i++)
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    // Draw galaxy
+    for(int i = 0;i<20000;i++)
     {
-      glUniform1i(glGetUniformLocation(prog_id, "is_moon"), i==1);
+      glUniform1i(glGetUniformLocation(prog_id, "object_id"), i);
       glBindVertexArray(VAO);
       glDrawElements(GL_PATCHES, F.size(), GL_UNSIGNED_INT, 0);
-      glBindVertexArray(0);
     }
+    glBindVertexArray(0);
 
 
     glfwSwapBuffers(window);

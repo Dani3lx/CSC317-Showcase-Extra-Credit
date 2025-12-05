@@ -8,8 +8,14 @@
 // expects: random2.glsl, PI.glsl
 vec3 random_direction( vec3 seed)
 {
-  /////////////////////////////////////////////////////////////////////////////
-  // Replace with your code 
-  return vec3(1,0,0);
-  /////////////////////////////////////////////////////////////////////////////
+  vec2 random_point = random2(seed);
+  
+  float theta = 2.0 * M_PI * random_point.x; 
+  float phi = acos(2.0 * random_point.y - 1.0);
+
+  float x = sin(phi) * cos(theta);
+  float y = sin(phi) * sin(theta);
+  float z = cos(phi);
+
+  return vec3(x, y, z);
 }
